@@ -1,6 +1,6 @@
 {
-  "name": "3.1.9",
-  "code": 319,
+  "name": "3.1.8",
+  "code": 318,
   "desc": "强制更新APP",
-  "force": true
+  "force": false
 }
