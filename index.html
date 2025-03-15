@@ -1,12 +1,16 @@
-<html lang="">
+<!DOCTYPE html>
+<html lang="zh-CN">
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" />
   <meta name="format-detection" content="telephone=no" />
-  <title>薯片影视APP下载导航</title>
-  <meta name="description" content="" />
-  <meta name="keywords" content="" />
+  <title>薯片影视APP - 海量影视资源在线观看下载</title>
+  <meta name="description" content="薯片影视APP是一款专业的影视资源聚合应用，提供海量电影、电视剧、动漫、综艺等在线观看和下载服务，支持Android和iOS系统。" />
+  <meta name="keywords" content="薯片影视,影视APP,在线观看,视频下载,电影,电视剧,动漫,综艺" />
+  <meta name="author" content="薯片影视" />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://app.lianjianads.com" />
   <style type="text/css">
     * {
       margin: 0;
@@ -101,28 +105,6 @@
       align-items: flex-start;
     }
 
-    .label-top-list label {
-      padding: 0.07rem 0.1rem;
-      border-radius: 0.04rem;
-      color: #ffffff;
-      margin-left: 0.06rem;
-      font-size: 0.16rem;
-      line-height: 1;
-    }
-
-    .label-top-list .item-1 b {
-      color: #4d3607;
-      font-weight: bold;
-      font-size: 0.16rem;
-      line-height: 1;
-      /*必需加前缀 -webkit- 才支持这个text值 */
-      -webkit-background-clip: text;
-      background-clip: text;
-      /*text-fill-color会覆盖color所定义的字体颜色 */
-      -webkit-text-fill-color: transparent;
-    }
-
-
     .tips {
       display: none;
       font-size: 12px;
@@ -130,6 +112,7 @@
       color: #494949;
       line-height: 1.8;
       margin-top: 40px;
+      margin-bottom: 30px;
     }
 
     .mask-bg {
@@ -464,16 +447,6 @@
     }
 
 
-    .header__text>h1 {
-      color: #fff;
-      font-size: 18px;
-    }
-
-    .header__text>p {
-      color: #adb7be;
-      font-size: 14px;
-    }
-
     /* 新的样式*/
     .web,
     .download {
@@ -628,33 +601,45 @@
         height: 42px;
       }
     }
-  </style>
-  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-  <script type="application/javascript">
-    let type = 1;
 
-    function isIPad() {
-      const userAgent = navigator.userAgent.toLowerCase();
-      if (!userAgent) return false;
-      return (
-        /ipad/.test(userAgent) ||
-        (/macintosh|mac os x/i.test(userAgent) &&
-          navigator.maxTouchPoints > 0)
-      );
+    /* 友情链接 */
+    .friend-links {
+      max-width: 680px;
+      margin: 0 auto 50px;
+      padding: 0 10px;
     }
-    function getOsType() {
-      const u = navigator.userAgent;
-      const isAndroid = u.indexOf("Android") > -1 || u.indexOf("Adr") > -1; //判断是否是 android终端
-      const isIOS = /(iPhone|iPad|iPod|iOS)/i.test(u); //判断是否是 iOS终端
-      if (isAndroid) {
-        return "5";
-      } else if (isIOS || isIPad()) {
-        return "4";
-      } else {
-        return "1";
-      }
+    .friend-links__title {
+      color: #adb7be;
+      font-size: 18px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
     }
-  </script>
+    .friend-links__title img {
+      width: 20px;
+      margin-right: 10px;
+    }
+    .friend-links__list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .friend-links__item {
+      color: #878787;
+      font-size: 14px;
+      padding: 5px 15px;
+      border-radius: 15px;
+      background-color: rgba(85, 85, 85, 0.22);
+      transition: .3s;
+    }
+    .friend-links__item:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+    @media (max-width: 600px) {
+      .friend-links {margin-bottom: 30px;}
+    }
+  </style>
 </head>
 
 <body>
@@ -947,9 +932,17 @@
     </div>
   </div>
 </body>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script>
   let webList = [];
   let dList = [];
+  let type = 1;
+  // 友情链接数据
+  const friendLinks = [{
+    name: "绿色软件站",
+    url: "http://www.downcc.com"
+  }];
+
   // 静态数据
   const staticData = {
     androidUrl: "https://app.lianjianads.com/apk/release/mobile-java-armeabi_v7a.apk",
@@ -959,6 +952,12 @@
     backupUrls: []
   };
 
+  function getOsType() {
+    const u = navigator.userAgent;
+    const isAndroid = u.indexOf("Android") > -1 || u.indexOf("Adr") > -1;
+    const isIOS = /(iPhone|iPad|iPod|iOS)/i.test(u);
+    return isAndroid ? "5" : isIOS || isIPad() ? "4" : "1";
+  }
   // 绑定事件
   function setClick() {
     Array.from(document.querySelectorAll(".download__btn")).forEach(
@@ -1101,6 +1100,7 @@
     webHtml && $(".web").show(100);
     $(".download").show(300, () => {
       setClick();
+      renderFriendLinks();
     });
   }
 
@@ -1196,6 +1196,22 @@
   $(document).on("click", "#androidDownload", function() {
     window.location.href = staticData.androidUrl;
   });
+
+  // 渲染友情链接
+  function renderFriendLinks() {
+    $('.tips').after(`
+      <div class="friend-links">
+        <div class="friend-links__title">
+          <img src="./img/wl-1.png" alt="">友情链接
+        </div>
+        <div class="friend-links__list">
+          ${friendLinks.map(link =>
+            `<a href="${link.url}" target="_blank" class="friend-links__item">${link.name}</a>`
+          ).join('')}
+        </div>
+      </div>
+    `);
+  }
 </script>
 
 </html>
