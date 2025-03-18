@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0"/>
@@ -11,7 +10,7 @@
     <meta name="keywords" content="薯片影视,影视APP,在线观看,视频下载,电影,电视剧,动漫,综艺"/>
     <meta name="author" content="薯片影视"/>
     <meta name="robots" content="index,follow"/>
-    <link rel="canonical" href="https://app.lianjianads.com"/>
+    <link rel="canonical" href="https://shupian.top"/>
     <style>
         * {
             margin: 0;
@@ -670,6 +669,15 @@
             }
         }
     </style>
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?9086ff5128e3b92b57fd0ce55e327b90";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
 </head>
 
 <body>
@@ -992,7 +1000,7 @@
         // 1. 检测 CPU 架构特征
         const ua = navigator.userAgent.toLowerCase();
         const cpuArchMatch = /\b(arm64|aarch64|x64|amd64|wow64|x86_64)\b/i.test(ua);
-        
+
         // 2. 检测内存大小（如果可用）
         let hasLargeMemory = false;
         if (navigator.deviceMemory) {
@@ -1035,12 +1043,12 @@
             const canvas = document.createElement('canvas');
             const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
             if (!gl) return false;
-            
+
             const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
             if (!debugInfo) return false;
-            
+
             const renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL).toLowerCase();
-            
+
             // 检查高性能GPU
             const highEndGPUs = [
                 'adreno (tm) 6', // 骁龙8系列
@@ -1050,7 +1058,7 @@
                 'powervr',      // 部分高端联发科
                 'apple gpu'     // 苹果设备
             ];
-            
+
             return highEndGPUs.some(gpu => renderer.includes(gpu));
         } catch (e) {
             return false;
@@ -1074,11 +1082,11 @@
     function check64BitDeviceModel(model) {
         const known64BitDevices = [
             // 华为
-            'mate', 'p30', 'p40', 'p50', 'nova', 
+            'mate', 'p30', 'p40', 'p50', 'nova',
             // 小米
             'mi 10', 'mi 11', 'mi 12', 'redmi k', 'poco f',
             // OPPO
-            'find x', 'reno', 
+            'find x', 'reno',
             // vivo
             'iqoo', 'x', 'nex',
             // 一加
@@ -1093,12 +1101,12 @@
 
     // 静态数据
     const staticData = {
-        androidUrl: checkSystemArchitecture() 
-            ? "https://app.lianjianads.com/apk/release/mobile-java-arm64_v8a.apk" 
-            : "https://app.lianjianads.com/apk/release/mobile-java-armeabi_v7a.apk",
+        androidUrl: checkSystemArchitecture()
+            ? "https://app.shupian.top/apk/release/mobile-java-arm64_v8a.apk"
+            : "https://app.shupian.top/apk/release/mobile-java-armeabi_v7a.apk",
         androidVersion: "3.1.8版",
-        shareUrl: "https://app.lianjianads.com",
-        mainUrl: "https://app.lianjianads.com",
+        shareUrl: "https://shupian.top",
+        mainUrl: "https://shupian.top",
         backupUrls: []
     };
 
